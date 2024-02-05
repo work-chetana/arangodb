@@ -54,7 +54,11 @@ class MetricsFeature final : public ArangodFeature {
 
   static constexpr std::string_view name() noexcept { return "Metrics"; }
 
-  explicit MetricsFeature(Server& server);
+  explicit MetricsFeature(Server& server,
+                          QueryRegistryFeature& queryRegistryFeature,
+                          StatisticsFeature& statisticsFeature,
+                          EngineSelectorFeature& engineSelectorFeature,
+                          ClusterMetricsFeature& clusterMetricsFeature);
 
   bool exportAPI() const noexcept;
   bool ensureWhitespace() const noexcept;
@@ -114,6 +118,11 @@ class MetricsFeature final : public ArangodFeature {
   std::shared_ptr<Metric> doAdd(Builder& builder);
   std::shared_ptr<Metric> doAddDynamic(Builder& builder);
   std::shared_lock<std::shared_mutex> initGlobalLabels() const;
+
+  QueryRegistryFeature& _queryRegistryFeature;
+  StatisticsFeature& _statisticsFeature;
+  EngineSelectorFeature& _engineSelectorFeature;
+  ClusterMetricsFeature& _clusterMetricsFeature;
 
   mutable std::shared_mutex _mutex;
 
