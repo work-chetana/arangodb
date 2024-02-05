@@ -957,7 +957,7 @@ if (MSVC)
       # get real location by querying for the target.
       execute_process(
           COMMAND powershell
-              "${CCACHE} --shimgen-help | Select-String -SimpleMatch "Target:"| ForEach-Object { ($_ -split \"'\")[1]  }" 
+              "${CCACHE} --shimgen-help | Select-String -SimpleMatch \"Target:\"| ForEach-Object { ($_ -split \"'\")[1]  }"
           OUTPUT_VARIABLE CCACHE_REAL
           RESULT_VARIABLE CCACHE_RESULT_CODE
           OUTPUT_STRIP_TRAILING_WHITESPACE
