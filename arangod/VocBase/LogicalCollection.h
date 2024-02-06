@@ -179,6 +179,7 @@ class LogicalCollection : public LogicalDataSource {
   bool isSmartEdgeCollection() const noexcept;
   bool isSatToSmartEdgeCollection() const noexcept;
   bool isSmartToSatEdgeCollection() const noexcept;
+  bool isSmartVertexCollection() const noexcept;
 
 #else
   bool isDisjoint() const noexcept { return false; }
@@ -313,7 +314,9 @@ class LogicalCollection : public LogicalDataSource {
   // SECTION: Indexes
 
   /// @brief Create a new Index based on VelocyPack description
-  virtual std::shared_ptr<Index> createIndex(velocypack::Slice, bool&);
+  virtual std::shared_ptr<Index> createIndex(
+      velocypack::Slice, bool&,
+      std::shared_ptr<std::function<arangodb::Result(double)>> = nullptr);
 
   /// @brief Find index by definition
   std::shared_ptr<Index> lookupIndex(velocypack::Slice) const;
