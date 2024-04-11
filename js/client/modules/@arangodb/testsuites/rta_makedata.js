@@ -29,8 +29,6 @@ const functionsDocumentation = {
   'rta_makedata': 'Release Testautomation Makedata / Checkdata framework'
 };
 const optionsDocumentation = [
-  '   - `rtasource`: directory of the release test automation',
-  '   - `makedata_args`: list of arguments ala --makedata_args:bigDoc true'
 ];
 
 const internal = require('internal');

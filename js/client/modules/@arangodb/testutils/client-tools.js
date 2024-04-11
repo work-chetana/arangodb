@@ -338,7 +338,7 @@ function rtaMakedata(options, instanceManager, writeReadClean, msg, logFile, mor
     args = Object.assign(args, addArgs);
   }
   let argv = toArgv(args);
-  argv = argv.concat(['--'],
+  argv = argv.concat(['--', options.makedataDB],
                      moreargv, [
                        '--minReplicationFactor', '2',
                        '--progress', 'true',
