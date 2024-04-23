@@ -1,6 +1,8 @@
 devel
 -----
 
+* FE-443: Fix inconsistent tooltip padding in Create Index dialog.
+
 * Make AQL query optimizer create less query execution plan permutations when
   a query contains multiple occurrences of COLLECT statements under certain
   conditions:
